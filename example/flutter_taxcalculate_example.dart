@@ -1,0 +1,37 @@
+import 'package:flutter_taxcalculate/flutter_taxcalculate.dart';
+
+void main() {
+  // Example 1: Tax-exclusive calculation
+  final taxes = [
+    Tax(name: 'VAT', rate: 0.15), // 15% VAT
+    Tax(name: 'NHIL', rate: 0.025), // 2.5% NHIL
+  ];
+
+  final price = 1000.0;
+  final result = TaxCalculator.calculateTotal(price, taxes);
+
+  print('Tax-exclusive calculation:');
+  print('Subtotal: ${TaxCalculator.formatCurrency(result['subtotal'])}');
+  print('Total: ${TaxCalculator.formatCurrency(result['total'])}');
+  print('Tax breakdown:');
+  result['taxAmounts'].forEach((name, amount) {
+    print('$name: ${TaxCalculator.formatCurrency(amount)}');
+  });
+
+  // Example 2: Tax-inclusive calculation
+  final inclusiveResult = TaxCalculator.calculateTotal(
+    price,
+    taxes,
+    isInclusive: true,
+  );
+
+  print('\nTax-inclusive calculation:');
+  print(
+    'Subtotal: ${TaxCalculator.formatCurrency(inclusiveResult['subtotal'])}',
+  );
+  print('Total: ${TaxCalculator.formatCurrency(inclusiveResult['total'])}');
+  print('Tax breakdown:');
+  inclusiveResult['taxAmounts'].forEach((name, amount) {
+    print('$name: ${TaxCalculator.formatCurrency(amount)}');
+  });
+}
