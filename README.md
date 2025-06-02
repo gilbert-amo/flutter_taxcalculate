@@ -86,7 +86,7 @@ class TaxCalculator {
 ```
 
 The `calculateTotal` method returns a map with:
-- `subtotal`: The original price
+- `totalExclusivePrice`: The original price
 - `total`: The final price with all taxes
 - `taxAmounts`: A map of tax names to their calculated amounts
 

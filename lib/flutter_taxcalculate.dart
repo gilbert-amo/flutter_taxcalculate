@@ -5,8 +5,9 @@ library;
 class Tax {
   final String name;
   final double rate;
+  final bool isInclusive;
 
-  const Tax({required this.name, required this.rate});
+  const Tax({required this.name, required this.rate, required this.isInclusive});
 }
 
 /// A class that handles tax calculations
