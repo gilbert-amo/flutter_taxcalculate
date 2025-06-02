@@ -3,8 +3,8 @@ import 'package:flutter_taxcalculate/flutter_taxcalculate.dart';
 void main() {
   // Example 1: Tax-exclusive calculation
   final taxes = [
-    Tax(name: 'VAT', rate: 0.15), // 15% VAT
-    Tax(name: 'NHIL', rate: 0.025), // 2.5% NHIL
+    Tax(name: 'VAT', rate: 0.15, isInclusive: true), // 15% VAT
+    Tax(name: 'NHIL', rate: 0.025, isInclusive: true), // 2.5% NHIL
   ];
 
   final price = 1000.0;

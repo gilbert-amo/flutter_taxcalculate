@@ -4,8 +4,8 @@ import 'package:test/test.dart';
 void main() {
   group('TaxCalculator', () {
     final taxes = [
-      Tax(name: 'VAT', rate: 0.15),
-      Tax(name: 'NHIL', rate: 0.025),
+      Tax(name: 'VAT', rate: 0.15, isInclusive: true),
+      Tax(name: 'NHIL', rate: 0.025, isInclusive: true),
     ];
 
     test('calculates tax-exclusive total correctly', () {
