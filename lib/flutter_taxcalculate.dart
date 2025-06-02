@@ -18,7 +18,7 @@ class TaxCalculator {
   /// [isInclusive] indicates if the price already includes taxes
   ///
   /// Returns a map containing:
-  /// - 'subtotal': The original price
+  /// - 'totalExclusivePrice': The original price
   /// - 'total': The final price with all taxes
   /// - 'taxAmounts': A map of tax names to their calculated amounts
   static Map<String, dynamic> calculateTotal(
@@ -28,7 +28,7 @@ class TaxCalculator {
   }) {
     if (taxes.isEmpty) {
       return {
-        'subtotal': price,
+        'totalExclusivePrice': price,
         'total': price,
         'taxAmounts': <String, double>{},
       };
@@ -36,7 +36,7 @@ class TaxCalculator {
 
     final taxAmounts = <String, double>{};
     double total = price;
-    double subtotal = price;
+    double totalExclusivePrice = price;
 
     if (isInclusive) {
       // Calculate backwards from inclusive price
@@ -46,7 +46,7 @@ class TaxCalculator {
         taxAmounts[tax.name] = taxAmount;
         remainingAmount -= taxAmount;
       }
-      subtotal = remainingAmount;
+      totalExclusivePrice = remainingAmount;
     } else {
       // Calculate forward from exclusive price
       for (final tax in taxes) {
@@ -57,7 +57,7 @@ class TaxCalculator {
     }
 
     return {
-      'subtotal': subtotal,
+      'totalExclusivePrice': totalExclusivePrice,
       'total': isInclusive ? price : total,
       'taxAmounts': taxAmounts,
     };

@@ -10,7 +10,7 @@ void main() {
 
     test('calculates tax-exclusive total correctly', () {
       final result = TaxCalculator.calculateTotal(1000.0, taxes);
-      expect(result['subtotal'], 1000.0);
+      expect(result['totalExclusivePrice'], 1000.0);
       expect(result['total'], 1175.0);
       expect(result['taxAmounts']['VAT'], 150.0);
       expect(result['taxAmounts']['NHIL'], 25.0);
@@ -22,7 +22,7 @@ void main() {
         taxes,
         isInclusive: true,
       );
-      expect(result['subtotal'], closeTo(1000.0, 0.01));
+      expect(result['totalExclusivePrice'], closeTo(1000.0, 0.01));
       expect(result['total'], 1175.0);
       expect(result['taxAmounts']['VAT'], closeTo(150.0, 0.01));
       expect(result['taxAmounts']['NHIL'], closeTo(25.0, 0.01));

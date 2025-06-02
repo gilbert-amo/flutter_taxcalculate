@@ -11,7 +11,7 @@ void main() {
   final result = TaxCalculator.calculateTotal(price, taxes);
 
   print('Tax-exclusive calculation:');
-  print('Subtotal: ${TaxCalculator.formatCurrency(result['subtotal'])}');
+  print('Total Exclusive Price: ${TaxCalculator.formatCurrency(result['totalExclusivePrice'])}');
   print('Total: ${TaxCalculator.formatCurrency(result['total'])}');
   print('Tax breakdown:');
   result['taxAmounts'].forEach((name, amount) {
@@ -27,7 +27,7 @@ void main() {
 
   print('\nTax-inclusive calculation:');
   print(
-    'Subtotal: ${TaxCalculator.formatCurrency(inclusiveResult['subtotal'])}',
+    'Total Exclusive Price: ${TaxCalculator.formatCurrency(inclusiveResult['totalExclusivePrice'])}',
   );
   print('Total: ${TaxCalculator.formatCurrency(inclusiveResult['total'])}');
   print('Tax breakdown:');
